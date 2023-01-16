@@ -12,7 +12,7 @@ Features Include:
 - ADD TEXT HERE
 
 ## Instructions
-- TADD TEXT HERE
+- ADD TEXT HERE
 
 ## Visuals 
 
