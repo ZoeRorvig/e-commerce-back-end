@@ -22,15 +22,15 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const tagData = await Tag.findByPk(req.params.id, {
-        include: [{
-          model: Product,
-        }]
+      include: [{
+        model: Product,
+      }]
     });
     res.json(tagData);
-} catch (err) {
+  } catch (err) {
     console.error(err);
     res.json(err);
-}
+  }
 });
 
 // create a new tag
@@ -38,14 +38,21 @@ router.post('/', async (req, res) => {
   try {
     const tagData = await Tag.create(req.body);
     res.json(tagData);
-} catch (err) {
+  } catch (err) {
     console.error(err);
     res.json(err);
-}
+  }
 });
 
-router.put('/:id', (req, res) => {
-  // update a tag's name by its `id` value
+// update a tag's name by its `id` value
+router.put('/:id', async (req, res) => {
+  try {
+    const tagData = await Tag.update(req.body, { where: { id: req.params.id } });
+    res.json(tagData);
+  } catch (err) {
+    console.error(err);
+    res.json(err);
+  }
 });
 
 router.delete('/:id', (req, res) => {

@@ -24,17 +24,17 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const productData = await Product.findByPk(req.params.id, {
-        include: [{
-          model: Category,
-        }, {
-          model: Tag,
-        }]
+      include: [{
+        model: Category,
+      }, {
+        model: Tag,
+      }]
     });
     res.json(productData);
-} catch (err) {
+  } catch (err) {
     console.error(err);
     res.json(err);
-}
+  }
 });
 
 // create new product
@@ -100,14 +100,14 @@ router.put('/:id', (req, res) => {
 });
 
 // delete one product by its `id` value
-router.delete('/:id', async(req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const productData = await Product.destroy({ where: { id: req.params.id } });
     res.json(productData);
-} catch (err) {
+  } catch (err) {
     console.error(err);
     res.json(err);
-}
+  }
 });
 
 module.exports = router;
